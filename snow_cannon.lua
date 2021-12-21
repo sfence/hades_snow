@@ -24,13 +24,13 @@ hades_snow.snow_cannon = appliances.appliance:new(
       need_supply = true,
       have_control = true,
       
-      --[[sounds = {
+      sounds = {
         running = {
           sound = "hades_snow_cannon_running",
           sound_param = {max_hear_distance = 16, gain = 1},
-          repeat_timer = 4,
+          repeat_timer = 0,
         },
-      },--]]
+      },
     })
 
 local snow_cannon = hades_snow.snow_cannon

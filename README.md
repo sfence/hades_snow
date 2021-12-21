@@ -51,3 +51,6 @@ https://freesound.org/people/InspectorJ/sounds/416967/
 Angel_Perez_Grandi (CC BY 3.0):
 https://freesound.org/people/Angel_Perez_Grandi/sounds/49190/
   default_ice_dug.ogg
+
+InspectorJ/SFENCE (CC BY 3.0):
+  hades_snow_cannon_running* - delivered from https://freesound.org/people/InspectorJ/sounds/417421/ by  InspectorJ
