@@ -13,7 +13,7 @@ hades_snow.snow_cannon = appliances.appliance:new(
       node_name_active = "hades_snow:snow_cannon_active",
       
       node_description = S("Snow Cannon"),
-    	node_help = S("Connect to LV/generator power (400 EU) and water pipe.").."\n"..S("Generate snow."),
+    	node_help = S("Connect to LV/generator power (400 EU) and water pipe.").."\n"..S("Punch to turn on/off."),
       
       input_stack = 0,
       have_input = false,

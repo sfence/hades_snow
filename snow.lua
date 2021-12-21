@@ -31,7 +31,7 @@ minetest.register_node("hades_snow:snow", {
   on_construct = function(pos)
     local node = minetest.get_node(pos)
     if node.param2>=64 then
-      minetest.set_node(pos, {name="hades_snow:snowblock"})
+      minetest.set_node(pos, {name="hades_snow:snowblock", param2=node.param2})
     end
   end,
   on_place = function(itemstack, placer, pointed_thing)

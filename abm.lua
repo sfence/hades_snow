@@ -8,7 +8,7 @@ minetest.register_abm({
     action = function(pos, node)
       pos.y = pos.y + 1
       local node_above = minetest.get_node(pos)
-      if (minetest.get_item_group(node_above.name, "snow")==0) 
+      if (minetest.get_item_group(node_above.name, "snowy")==0) 
           and (minetest.get_item_group(node_above.name, "ice")==0) then
         pos.y = pos.y - 1
         node.param2 = node.param2 - 1
@@ -36,7 +36,7 @@ minetest.register_abm({
     action = function(pos, node)
       pos.y = pos.y + 1
       local node_above = minetest.get_node(pos)
-      if (minetest.get_item_group(node_above.name, "snow")==0) 
+      if (minetest.get_item_group(node_above.name, "snowy")==0) 
           and (minetest.get_item_group(node_above.name, "ice")==0) then
         pos.y = pos.y - 1
         if minetest.find_node_near(pos, 1, {"group:cooling"}) then
@@ -73,23 +73,17 @@ minetest.register_abm({
     interval = 23,
     chance = 7,
     action = function(pos, node)
-      pos.y = pos.y + 1
-      local node_above = minetest.get_node(pos)
-      if (minetest.get_item_group(node_above.name, "snow")==0) 
-          and (minetest.get_item_group(node_above.name, "ice")==0) then
-        pos.y = pos.y - 1
+      node.param2 = node.param2 - 1
+      if not minetest.find_node_near(pos, 1, {"group:snowy", "group:ice"}) then
         node.param2 = node.param2 - 1
-        if not minetest.find_node_near(pos, 1, {"group:snowy", "group:ice"}) then
-          node.param2 = node.param2 - 1
+      end
+      if node.param2>0 then
+        if node.name=="hades_snow:snowblock" and node.param2<64 then
+          node.name = "hades_snow:snow"
         end
-        if node.param2>0 then
-          if node.name=="hades_snow:snowblock" and node.param2<64 then
-            node.name = "hades_snow:snow"
-          end
-          minetest.swap_node(pos, node)
-        else
-          minetest.remove_node(pos)
-        end
+        minetest.swap_node(pos, node)
+      else
+        minetest.remove_node(pos)
       end
     end,
   })
@@ -117,7 +111,7 @@ minetest.register_abm({
       end
       pos.y = pos.y + 1
       local node_above = minetest.get_node(pos)
-      if (minetest.get_item_group(node_above.name, "snow")~=0) then
+      if (minetest.get_item_group(node_above.name, "snowy")~=0) then
         if node_above.param2>64 then
           node_above.param2 = node_above.param2 - 1
           minetest.swap_node(pos, node_above)
