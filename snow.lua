@@ -27,6 +27,7 @@ minetest.register_node("hades_snow:snow", {
 	sounds = hades_snow.node_sound_snow_defaults(),
   
   place_param2 = 1,
+  leveled = 1, -- fix problem with snow from snowman?
   drops = "hades_snow:snow",
   on_construct = function(pos)
     local node = minetest.get_node(pos)
@@ -43,7 +44,8 @@ minetest.register_node("hades_snow:snow", {
           node.name = "hades_snow:snowblock"
         end
         minetest.swap_node(pointed_thing.under, node)
-        return itemstack:take_item()
+        itemstack:take_item()
+        return itemstack
       end
     end
     return minetest.item_place(itemstack, placer, pointed_thing, 1)
