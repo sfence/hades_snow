@@ -17,10 +17,23 @@ minetest.register_entity("hades_snow:snow_ball", {
 
   on_activate = function(self, staticdata, dtime_s)
     self.object:set_acceleration(vector.new(0,-10,0))
+    self.old_velocity = vector.new(0,0,0)
   end,
 
   on_step = function(self, dtime, moveresult)
     if moveresult.collides then
+      local collision = moveresult.collisions[1]
+      if not collision then
+        local pos = self.object:get_pos()
+        local pos = vector.add(pos, vector.multiply(self.old_velocity, dtime))
+        local from_pos = vector.floor(vector.divide(pos, 16))
+        local to_pos = vector.add(from_pos, 15)
+        minetest.emerge_area(from_pos, to_pos)
+        self.object:set_velocity(self.old_velocity)
+        self.object:set_pos(pos)
+        --print("unloaded mapblock collision solved")
+        return
+      end
       local pos = self.object:get_pos()
       self.object:remove()
       local node = minetest.get_node(pos)
@@ -40,6 +53,8 @@ minetest.register_entity("hades_snow:snow_ball", {
           minetest.check_for_falling(pos)
         end
       end
+    else
+      self.old_velocity = self.object:get_velocity()
     end
   end,
 })
