@@ -5,14 +5,14 @@ local items = {
   
   pipe = "pipeworks:pipe_1_empty",
   
-  copper_wire = "hades_extramaterials:copper_wire",
-  empty_spool = "hades_extramaterials:empty_spool",
-  controller = "hades_extramaterials:ic",
+  copper_wire = "basic_materials:copper_wire",
+  empty_spool = "basic_materials:empty_spool",
+  controller = "basic_materials:ic",
   
-  electric_motor = "hades_extramaterials:motor",
-  transformer = "hades_extramaterials:gold_wire",
+  electric_motor = "basic_materials:motor",
+  transformer = "basic_materials:gold_wire",
   
-  bar = "hades_extramaterials:steel_bar",
+  bar = "basic_materials:steel_bar",
   
   freezer = "hades_core:mese",
 }
